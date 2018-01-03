@@ -4,7 +4,8 @@
         <p>Details:</p>
         <hr>
         <div>
-            Username: {{ switchName() }}
+            Username: {{ switchName() }} <br>
+            User Age: {{ userAge }}
         </div>
         <hr>
         <button @click="resetName()">Name Reset</button>
@@ -12,8 +13,13 @@
 </template>
 
 <script>
+    import { eventBus } from "../main";
+
     export default {
-      props: ['name'],
+      props: [
+          'name',
+          'userAge'
+      ],
 
       methods: {
         switchName() {
@@ -23,6 +29,12 @@
           this.name = this.name.split("").reverse().join("");
           this.$emit('nameWasReset', this.name); // this will emit an event
         }
+      },
+
+      created() {
+        eventBus.$on('ageWasEdited', (res) => {
+          this.userAge = res;
+        })
       }
     }
 </script>
