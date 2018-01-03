@@ -6,7 +6,7 @@
         <hr>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <app-user-detail :name="username"></app-user-detail>
+                <app-user-detail :name="username" @nameWasReset="username = $event"></app-user-detail>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <app-user-edit></app-user-edit>
@@ -22,7 +22,7 @@
     export default {
         data: function() {
           return {
-            username: 'Awawi'
+            username: 'Phemmy'
           };
         },
 

@@ -6,6 +6,8 @@
         <div>
             Username: {{ switchName() }}
         </div>
+        <hr>
+        <button @click="resetName()">Name Reset</button>
     </div>
 </template>
 
@@ -16,6 +18,10 @@
       methods: {
         switchName() {
           return this.name.split("").reverse().join("");
+        },
+        resetName() {
+          this.name = this.name.split("").reverse().join("");
+          this.$emit('nameWasReset', this.name); // this will emit an event
         }
       }
     }
