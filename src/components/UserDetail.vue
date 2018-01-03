@@ -4,14 +4,20 @@
         <p>Details:</p>
         <hr>
         <div>
-            Username: {{ name }}
+            Username: {{ switchName() }}
         </div>
     </div>
 </template>
 
 <script>
     export default {
-      props: ['name']
+      props: ['name'],
+
+      methods: {
+        switchName() {
+          return this.name.split("").reverse().join("");
+        }
+      }
     }
 </script>
 
